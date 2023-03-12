@@ -1,0 +1,59 @@
+//////----------------- Les etapes de création d'un project django ----------/////
+
+
+---------------  Creer environement de travail -----------
+- On créer notre dosier project 
+- On créer notre environement virtuel : python -m venv env_django
+- On' install django : pip install django
+- On créér notre project en utilisant le terminal: django-admin startproject ecommerce
+- se positionner sur le reppertoire projet et créér notre application django : django-admin startapp shop
+- list tout les package installer : pip freeze > requirement.txt
+
+
+--------------- Configurer le project --------------------
+- Allez dans setting et faire:
+	- import os (operating système)
+	- TEMPLATES_DIRS = os.path.join(BASE_DIR, 'templates') (au niveau de build path)
+	- installer notre app dans INSTALLED_APPS ecrire nom app : shop
+	- Au niveau de TEMPLATES inserer notre template dans DIR[]: DIR[TEMPLATES_DIRS] 
+
+
+------------- Creation de la base de données ------------
+- Allez dans le fichier models.py et insérer les classes correspondant dans nos tables
+- Enregistrer nos tables dans admin.py pour voir cela sur admindjango
+- faire une migration 
+- Creer un un 
+- inserer la fonction __str__ pour avoir le nom dans la base de données
+- aller dans admin creer une class pour que les table s'affiche sous forme de tableau
+
+------------- Montons niveaux frontend -----------
+- On créé un dossier  templates et nous  inserons nos fichier frontend communs a toute nos vue
+	- On crée le dossier shop puis un fichier base.html qui contion le gabarit de nos vues
+	- on ce sert de getbootstrap.com pour choisir une bar de menue
+	- Pas la suite on crée notre fichier urls pour donner les differents lien de nos vue
+	
+	-------------  La chronologie des vues -------------
+	- On utilise un bas.objects.all() pour retourner les elements. Ces elements peuvent etre
+	utiliser dans le notre vue(html) a cause de notre return : return render(request, 'shop/index.html', {'product_object' : product_object})
+	
+	- On traite le barre de recherche: ici on ce sert de l'information renvoyer pas la barre de recherche (request.GET.get('item-name'))
+	puis on ce sert de filter pour renvoyer info utile (product_object = Product.objects.filter(title__icontains=item_name))
+	
+	-On possède a la pagination : voir le code 
+	
+	- On passe a la vue en detail avec: base.objects.get() et definie un urls et sont fichier html apres on cherche un boution qui va
+	charger notre fichier html 
+	
+	- On gere les paniers pour cela on utilise le java script avec (jquery en CDN) pour copier le code que on vas charger dans notre fichier 
+	head de notre base.html. on utilise un evenement on click la suvegarde avec localstorage.
+	
+	-Importer le code bootstrap java scriptpour bien gerer les entettes. data-html = "true" autoriser les mise en forme html pure. par lasuite
+	on utilise les popover pour une meilleu entettes
+	
+	- Travaillons sur la liste des produits
+	
+	- Tout formulaire doit avoir un modele
+	
+	
+	
+	
